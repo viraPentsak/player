@@ -1,21 +1,23 @@
 import React from 'react';
-import Button from "../UI/Button/Button";
+import Video from "./Video";
+import Timeline from "./Timeline/Timeline";
 
 import './PlayerVideo.css';
 
 const PlayerView = (props) => {
     const {
-        videoSrc,
-        videoRef,
-        posterSrc
+        playedPercent,
+        bufferedPercent,
+        videoIsLoaded,
     } = props;
     return (
         <div className='video'>
-
             <div className="video__wrapper">
-                <video controls className='video__element' ref={videoRef} poster={posterSrc}>
-                    <source src={videoSrc}/>
-                </video>
+                <Video {...props} />
+                <Timeline
+                    videoIsLoaded={videoIsLoaded}
+                    buffered={bufferedPercent}
+                    played={playedPercent}/>
             </div>
         </div>
     );
