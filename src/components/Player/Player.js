@@ -1,16 +1,17 @@
 import React, {Component, createRef, Fragment} from 'react';
 import {connect} from 'react-redux';
 import {fetchVideo} from "../../actions";
+import {POSTER_SRC} from "../../constants/constants";
 
 import PlayerView from "./PlayerView";
-import {POSTER_SRC} from "../../constants/constants";
 import Button from "../UI/Button/Button";
 
 import {getPercentage} from "../../utils/functions";
 
 const mapStateToProps = state => {
     return {
-        videoSrc: state.videoSrc
+        videoSrc: state.videoSrc,
+        fetchInProgress: state.fetchInProgress
     }
 };
 
@@ -88,9 +89,11 @@ class Player extends Component {
                             progressed={this.videoProgressHandler}
                             timeUpdated={this.videoTimeUpdateHandler}
                             videoRef={this.videoRef}
+                            fetchInProgress={this.props.fetchInProgress}
                             videoIsLoaded={this.state.videoIsLoaded}
                             posterSrc={POSTER_SRC}/>
-                <Button clicked={this._getVideoSrc}>Get video URL</Button>
+                <Button disabled={this.props.fetchInProgress}
+                        clicked={this._getVideoSrc}>Get video URL</Button>
             </Fragment>
 
         );

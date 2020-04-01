@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Video from "./Video";
 import Timeline from "./Timeline/Timeline";
 
@@ -14,10 +15,12 @@ const PlayerView = (props) => {
         <div className='video'>
             <div className="video__wrapper">
                 <Video {...props} />
-                <Timeline
-                    videoIsLoaded={videoIsLoaded}
-                    buffered={bufferedPercent}
-                    played={playedPercent}/>
+                <div className="video__timeline">
+                    <Timeline
+                        videoIsLoaded={videoIsLoaded}
+                        buffered={bufferedPercent}
+                        played={playedPercent}/>
+                </div>
             </div>
         </div>
     );
