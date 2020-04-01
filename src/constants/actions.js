@@ -1,3 +1,0 @@
-export const FETCH_VIDEO = 'FETCH_VIDEO';
-export const FETCH_ERROR = 'FETCH_ERROR';
-export const FETCHING_IN_PROGRESS = 'FETCHING_IN_PROGRESS';
